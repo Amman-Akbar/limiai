@@ -1,0 +1,27 @@
+schema: '2.0'
+stages:
+  validate_model:
+    cmd: python -c "import hashlib; h = 
+      hashlib.md5(open('models/yoloe-26n-seg.pt','rb').read()).hexdigest(); 
+      open('model_metadata.txt','w').write(h)"
+    deps:
+    - path: models/yoloe-26n-seg.pt
+      hash: md5
+      md5: 856d030a37bc85872675206a22c030df
+      size: 11463019
+    outs:
+    - path: model_metadata.txt
+      hash: md5
+      md5: 09172eea573d5ce9c3bee0b63352130d
+      size: 32
+  smoke_test:
+    cmd: python -c "import torch; print('PyTorch Load OK')"
+    deps:
+    - path: model_metadata.txt
+      hash: md5
+      md5: 09172eea573d5ce9c3bee0b63352130d
+      size: 32
+    - path: models/yoloe-26n-seg.pt
+      hash: md5
+      md5: 856d030a37bc85872675206a22c030df
+      size: 11463019

@@ -1,0 +1,40 @@
+# Build Context Exclusions
+.git/
+.github/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+
+# Testing & Logs
+tests/
+mlruns/
+.pytest_cache/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+
+# Models
+# (Weights are copied in Dockerfile; excluding other DVC artifacts)
+.dvc/
+.dvcignore
+
+# Documentation
+README.md
+DEPLOYMENT.md
+CONTRIBUTING.md
+docs/
+
+# IDEs & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
